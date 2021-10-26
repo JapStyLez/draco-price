@@ -1,0 +1,19 @@
+{
+  "name": "draco-alert",
+  "version": "1.0.0",
+  "description": "alert for draco price fluctuation",
+  "main": "index.js",
+  "author": "victor harry",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "cfonts": "^2.10.0",
+    "node-cron": "^3.0.0",
+    "puppeteer": "^10.4.0",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.14.1"
+  }
+}
