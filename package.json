@@ -7,10 +7,11 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node --experimental-json-modules src/index.js"
   },
   "dependencies": {
     "cfonts": "^2.10.0",
+    "moment": "^2.29.1",
     "node-cron": "^3.0.0",
     "puppeteer": "^10.4.0",
     "qrcode-terminal": "^0.12.0",
