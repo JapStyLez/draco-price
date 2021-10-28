@@ -38,16 +38,16 @@ cron.schedule('*/5 * * * *', () => {
 });
 
 // Envia relatórios de 30 em 30 minutos
-cron.schedule('*/30 * * * *', () => {
+cron.schedule('10 */30 * * * *', () => {
 	let report = `*Relatório ~Cherno~ Draco 🐉🪙*\n\n`
-	let configObject = CONFIG.draco[moment().format("DD/MM/YYYY")].slice(-6)
+	let configObject = CONFIG.draco[moment().format("DD/MM/YYYY")].slice(-7)
 	configObject.forEach((draco, index) => {
 		let DIFF = 0
 		if(index == 0) {
 			report += '|--------------------------------|\n'
 			report += `\xa0\xa0\xa0\xa0*$${draco.value.toFixed(4)} às ${draco.moment} | ANTIGO*\n`
 			report += '|--------------------------------|\n'
-		} else if(index != 0 && index != 5) {
+		} else if(index != 0 && index != 6) {
 			DIFF = parseFloat(draco.value - configObject[index - 1].value).toFixed(4);
 			report += `\xa0\xa0_$${draco.value.toFixed(4)} às ${draco.moment} | ${DIFF == 0 ? `+${DIFF} 💤` : DIFF > 0 ? `+${DIFF} 👆` : `${DIFF} 👇`}_\n`
 		} else {
