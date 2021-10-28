@@ -13,10 +13,6 @@ const connection = () => {
         console.log('Client is ready!');
     });
 
-    client.on('message_create', message => {
-        if (message.body === '$draco') getDraco().then(r => client.sendMessage(message.from, r));
-    });
-
     client.initialize();
 }
 
