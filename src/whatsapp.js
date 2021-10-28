@@ -1,6 +1,7 @@
 import { Client } from 'whatsapp-web.js'
 import qrcode from 'qrcode-terminal'
 import CONFIG from '../config.json'
+import moment from 'moment-timezone';
 
 const client = new Client();
 
@@ -17,7 +18,7 @@ const connection = () => {
 }
 
 const sendMessage = (message) => {
-    CONFIG.phones.forEach(phone => client.sendMessage(phone, message).catch(console.log))
+    CONFIG.phones.forEach(phone => client.sendMessage(phone, message).then(() => console.log(`Relatório enviado às ${moment().format("HH:mm")} para ${phone} ✉️\n${message}\n\n`)).catch(console.log))
 }
 
 export { connection, sendMessage }

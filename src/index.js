@@ -20,9 +20,10 @@ async function getDraco() {
 // Salva relatórios de 1 em 1 minuto
 cron.schedule('*/5 * * * *', () => {
 	getDraco().then(r => {
+		let now = moment().format("HH:mm");
 		let lastDay = Object.keys(CONFIG.draco)[Object.keys(CONFIG.draco).length-1];
 		if (lastDay === moment().format("DD/MM/YYYY")) {
-			CONFIG.draco[lastDay].push({value: r, moment: moment().format("HH:mm")})
+			CONFIG.draco[lastDay].push({value: r, moment: now})
 			fs.writeFile('./config.json', JSON.stringify(CONFIG), function writeJSON(err) {
 				if (err) return console.log(err);
 			});
@@ -32,6 +33,7 @@ cron.schedule('*/5 * * * *', () => {
 				if (err) return console.log(err);
 			});
 		}
+		console.log(`${now}: Draco salvo à $${r} 💾`)
 	});
 });
 
